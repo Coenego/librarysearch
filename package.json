@@ -1,0 +1,21 @@
+{
+  "name": "LibrarySearch",
+  "description": "Cambridge University - LibrarySearch",
+  "version": "0.1.0",
+  "homepage": "https://github.com/coenego/librarysearch",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/coenego/librarysearch.git"
+  },
+  "dependencies": {
+    "connect": "latest",
+    "express": "latest",
+    "grunt-cli": "latest",
+    "request": "latest",
+    "underscore": "latest",
+    "xml2js": "latest"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
