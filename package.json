@@ -3,18 +3,39 @@
   "description": "Cambridge University - LibrarySearch",
   "version": "0.1.0",
   "homepage": "https://github.com/coenego/librarysearch",
+  "author": {
+    "name": "Mathieu Decoene",
+    "email": "hello@mathieudecoene.be"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/coenego/librarysearch.git"
+    "url": "git://github.com/Coenego/librarysearch.git"
   },
   "dependencies": {
+    "bunyan": "latest",
     "connect": "latest",
+    "ejs": "latest",
     "express": "latest",
     "grunt-cli": "latest",
     "request": "latest",
+    "shelljs": "latest",
     "underscore": "latest",
     "xml2js": "latest"
   },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-cli": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-text-replace": "latest",
+    "mocha": "latest",
+    "optimist": "latest"
+  },
+  "optionalDependencies": {
+    "bunyan-syslog": "latest"
+  },
+  "bundleDependencies": [],
   "engines": {
     "node": ">=0.8"
   }
