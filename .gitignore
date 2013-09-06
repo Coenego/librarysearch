@@ -17,5 +17,7 @@ trunk
 results
 post_update
 node_modules
+!node_modules/lib-aquabrowser
+!node_modules/lib-summon
 
 npm-debug.log

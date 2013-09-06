@@ -1,6 +1,6 @@
 {
   "name": "LibrarySearch",
-  "description": "Cambridge University - LibrarySearch",
+  "description": "Cambridge University Library Search",
   "version": "0.1.0",
   "homepage": "https://github.com/coenego/librarysearch",
   "author": {
@@ -17,6 +17,9 @@
     "ejs": "latest",
     "express": "latest",
     "grunt-cli": "latest",
+    "lib-aquabrowser": "",
+    "lib-summon": "",
+    "path": "latest",
     "request": "latest",
     "shelljs": "latest",
     "underscore": "latest",
@@ -28,6 +31,7 @@
     "grunt-contrib-clean": "latest",
     "grunt-contrib-copy": "latest",
     "grunt-contrib-jshint": "latest",
+    "grunt-mocha-hack": "latest",
     "grunt-text-replace": "latest",
     "mocha": "latest",
     "optimist": "latest"
