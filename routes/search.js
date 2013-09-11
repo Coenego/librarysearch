@@ -1,3 +1,7 @@
+var _ = require('underscore');
+var $ = require('jquery');
+var request = require('request');
+
 var AquabrowserAPI = require('lib-aquabrowser');
 var SummonAPI = require('lib-summon');
 
@@ -6,70 +10,62 @@ var config = require('../config');
 /** 
 * Renders the template without the results displayed
 */
-exports.getContent = function(req, res) {
-    res.render('search', { title: 'Search' });
+var getContent = exports.getContent = function(req, res) {
+
+    // Render the partial
+    res.render('partials/results', {'query': ''}, function(err, html) {
+
+        // Render the index template and insert the rendered partial
+        res.render('index', {'title': 'Results', 'body': html});
+    });
 };
 
 /**
-* Perform a search
+* Perform a search via the front-end
 */
-exports.getResults = function(req, res) {
+var getResults = exports.getResults = function(req, res) {
 
-    // If a (valid) query is entered
-    if (req.params.length != null) {
+    // When a valid query is entered
+    if (req.params.query) {
 
-        // Store how many external api's have been called
-        var searchComplete = 0;
+        // Store the query into a variable
+        var query = req.params.query;
 
-        // Process the query to search for results in the external API's
-        getResultsFromAPI(req.params.query, function(results) {
+        // Construct the url for the AJAX request
+        var url = 'http://localhost:' + config.server.port + '/api/search/' + query;
 
-            // Increase our temporary variable when the callback function is executed
-            searchComplete++;
-
-            // Check if the data from both the external API's has been collected
-            if (searchComplete === Object.keys(config.constants.engines).length) {
-
-                // Render the template (temporary solution with dummy data)
-                res.render('search', {
-                    'title': 'Search',
-                    'query': req.params.query, 
-                    'results': results
-                });
+        $.ajax({
+            'url': url,
+            'timeout': 10000,
+            'success': function(results) {
+                renderTemplate(res, query, results);
+            },
+            'error': function() {
+                renderTemplate(res, query);
             }
         });
+
+    // When an invalid query is entered
+    } else {
+        renderTemplate(res);
     }
 };
 
 /**
- * Get the search results
- *
- * @param  {String}    query                The query to will be processed to external API
- * @param  {Function}  callback             Standard callback function
- */
-var getResultsFromAPI = function(query, callback) {
-
-    // Create variables for both the results from the external API's
-    var resAquabrowser = null;
-    var resSummon = null;
-
-    // Get Aquabrowser results
-    AquabrowserAPI.getAquabrowserResults(query, function(err, res) {
-        if (err) {
-            console.log(err);
-        } else {
-            resAquabrowser = res.body;
-        }
-        callback(['result1','result2','result3','result4','result5']);
-    });
-
-    // Get Summon results
-    SummonAPI.getSummonResults(query, function(err, res) {
-        if (err) {
-            console.log(err);
-        } else {
-            resSummon = res.body
-        }
-        callback(['result1','result2','result3','result4','result5']);
-    });
+* Renders the template for the results
+*
+* @param  res
+* @param  query
+* @param  results  
+*/
+var renderTemplate = function(res, query, results) {
+    if (results) {
+        res.render('partials/results', {'query': query, 'data': results}, function(err, html) {
+            if (!err) {
+                res.render('index', {'body': html});
+            } else {
+                res.render('index', {'body': null});
+            }
+        });
+    }
 };

@@ -25,7 +25,8 @@
     "require-dir": "latest",
     "shelljs": "latest",
     "underscore": "latest",
-    "xml2js": "latest"
+    "xml2js": "latest",
+    "jquery": "~1.8.3"
   },
   "devDependencies": {
     "grunt": "latest",

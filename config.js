@@ -12,13 +12,15 @@ config.constants = {
     'engines': {
         'summon': {
             'auth': {
-                'id':   '[ID]',
-                'key':  '[KEY]'
+                'id':   '',
+                'key':  ''
             },
+            'timeout': 10000,
             'uri': 'api.summon.serialssolutions.com',
             'version': '/2.0.0/search'
         },
         'aquabrowser': {
+            'timeout': 5000,
             'uri': 'http://search.lib.cam.ac.uk/sru.ashx?'
         }
     }

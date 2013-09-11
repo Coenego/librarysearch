@@ -13,7 +13,6 @@ var searchResults = function(e) {
         window.location.href  = 'http://localhost:1234/search/' + query;
         return false;
     }
-
     return false;
 };
 

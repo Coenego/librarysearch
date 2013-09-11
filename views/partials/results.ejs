@@ -1,0 +1,76 @@
+<div class="jumbotron">
+    <div class="container">
+        <form role="form" id="frmSearch">
+            <div class="form-group">
+                <label class="sr-only" for="txtQuery"></label>
+                <input type="text" class="form-control" id="txtQuery" placeholder="Enter query" value="<%= query %>">
+            </div>
+            <button type="submit" data-loading-text="Fetching results..." class="btn btn-primary btn-lg">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <% if (query) { %>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Results for <%= query %></h5>
+        </div>
+
+        <!-- Aquabrowser-->
+        <div class="col-md-6">
+            <h4>Aquabrowser <small>(<%= data.results.aquabrowser.rowCount %> items)</small></h4>
+
+            <% if (data.results.aquabrowser.items) { %>
+                <% if (data.results.aquabrowser.items.length) { %>
+                <ul>
+                <% for(var i=0; i<data.results.aquabrowser.items.length; i++) {%>
+                    <li>
+                        <a target="_blank" href="<%= data.results.aquabrowser.items[i].link %>" title="<%= data.results.aquabrowser.items[i].title %>"><%= data.results.aquabrowser.items[i].title %></a>
+                        <span class="row">
+                            <span class="col-md-12">[<%= data.results.aquabrowser.items[i].contentType %>]</span>
+                        </span>
+                    </li>
+                <% } %>
+                </ul>
+                <% } else { %>
+                    <div class="alert alert-info">No results</div>
+                <% } %>
+            <% } %>
+        </div>
+
+        <!-- Summon -->
+        <div class="col-md-6">
+            <h4>Summon <small>(<%= data.results.summon.rowCount %> items)</small></h4>
+
+            <% if (data.results.summon.items) { %>
+                <% if (data.results.summon.items.length) { %>
+                <ul>
+                <% for(var i=0; i<data.results.summon.items.length; i++) {%>
+                    <li>
+                        <a target="_blank" href="<%= data.results.summon.items[i].link %>" title="<%= data.results.summon.items[i].title %>"><%= data.results.summon.items[i].title %></a>
+                        <span class="row">
+                            <span class="col-md-12">[<%= data.results.summon.items[i].contentType %>]</span>
+                        </span>
+                    </li>
+                <% } %>
+                </ul>
+                <% } else { %>
+                    <div class="alert alert-info">No results</div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+
+    <% } else { %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">Invalid query</div>
+        </div>
+    </div
+    <% } %>
+</div>
+
+<div class="container">
+    <div class="col-md-1"><br/><br/></div>
+</div>
