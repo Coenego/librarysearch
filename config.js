@@ -10,18 +10,18 @@ config.server = {
 
 config.constants = {
     'engines': {
+        'aquabrowser': {
+            'timeout': 5000,
+            'uri': 'http://search.lib.cam.ac.uk/sru.ashx?'
+        },
         'summon': {
             'auth': {
-                'id':   '',
-                'key':  ''
+                'id':   'cam',
+                'key':  'n74nDv98EFz8hE1wVNoq3MgrU66a9r4M'
             },
             'timeout': 10000,
             'uri': 'api.summon.serialssolutions.com',
             'version': '/2.0.0/search'
-        },
-        'aquabrowser': {
-            'timeout': 5000,
-            'uri': 'http://search.lib.cam.ac.uk/sru.ashx?'
         }
     }
 }

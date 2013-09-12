@@ -36,6 +36,7 @@ var getRESTSearchResults = exports.getRESTSearchResults = function(req, res) {
         var query = req.params.query;
 
         // Store how many external api's have been called
+        var searchToComplete = Object.keys(config.constants.engines).length;
         var searchComplete = 0;
 
         // Create an object to store the search results
@@ -51,11 +52,12 @@ var getRESTSearchResults = exports.getRESTSearchResults = function(req, res) {
             searchComplete++;
 
             if (err) {
-                res.send(200, {'error': err});
+                results['aquabrowser']['error'] = err;
+            } else {
+                results['aquabrowser'] = _res;
             }
 
-            results['aquabrowser'] = _res;
-            if (searchComplete === 2) {
+            if (searchComplete === searchToComplete) {
                 res.send(200, {'results': results});
             }
         });
@@ -67,11 +69,12 @@ var getRESTSearchResults = exports.getRESTSearchResults = function(req, res) {
             searchComplete++;
 
             if (err) {
-                res.send(200, {'error': err});
+                results['summon']['error'] = err;
+            } else {
+                results['summon'] = _res;
             }
 
-            results['summon'] = _res;
-            if (searchComplete === 2) {
+            if (searchComplete === searchToComplete) {
                 res.send(200, {'results': results});
             }
         });

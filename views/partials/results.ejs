@@ -19,17 +19,29 @@
 
         <!-- Aquabrowser-->
         <div class="col-md-6">
-            <h4>Aquabrowser <small>(<%= data.results.aquabrowser.rowCount %> items)</small></h4>
+            <h4>Aquabrowser <% if (!data.results.aquabrowser.error) { %><small>(<%= data.results.aquabrowser.rowCount %> items)</small><% } %></h4>
+
+            <% if (data.results.aquabrowser.error) { %>
+                <div class="alert alert-danger"><%= data.results.aquabrowser.error %></div>
+            <% } %>
 
             <% if (data.results.aquabrowser.items) { %>
                 <% if (data.results.aquabrowser.items.length) { %>
                 <ul>
                 <% for(var i=0; i<data.results.aquabrowser.items.length; i++) {%>
                     <li>
-                        <a target="_blank" href="<%= data.results.aquabrowser.items[i].link %>" title="<%= data.results.aquabrowser.items[i].title %>"><%= data.results.aquabrowser.items[i].title %></a>
+                        <h5><a target="_blank" href="<%= data.results.aquabrowser.items[i].link %>" title="<%= data.results.aquabrowser.items[i].title %>"><%= data.results.aquabrowser.items[i].title %></a></h5>
                         <span class="row">
-                            <span class="col-md-12">[<%= data.results.aquabrowser.items[i].contentType %>]</span>
+                            <span class="col-md-3">
+                                <% if (data.results.aquabrowser.items[i].thumbnail) { %>
+                                <a href="#" class="thumbnail">
+                                  <img src="<%= data.results.aquabrowser.items[i].thumbnail %>" alt="<%= data.results.aquabrowser.items[i].title %>">
+                                </a>
+                                <% } %>
+                            </span>
+                            <span class="col-md-9">[<%= data.results.aquabrowser.items[i].contentType %>]</span>
                         </span>
+                        <hr/>
                     </li>
                 <% } %>
                 </ul>
@@ -41,17 +53,29 @@
 
         <!-- Summon -->
         <div class="col-md-6">
-            <h4>Summon <small>(<%= data.results.summon.rowCount %> items)</small></h4>
+            <h4>Summon <% if (!data.results.summon.error) { %><small>(<%= data.results.summon.rowCount %> items)</small><% } %></h4>
+
+            <% if (data.results.summon.error) { %>
+                <div class="alert alert-danger"><%= data.results.summon.error %></div>
+            <% } %>
 
             <% if (data.results.summon.items) { %>
                 <% if (data.results.summon.items.length) { %>
                 <ul>
                 <% for(var i=0; i<data.results.summon.items.length; i++) {%>
                     <li>
-                        <a target="_blank" href="<%= data.results.summon.items[i].link %>" title="<%= data.results.summon.items[i].title %>"><%= data.results.summon.items[i].title %></a>
+                        <h5><a target="_blank" href="<%= data.results.summon.items[i].link %>" title="<%= data.results.summon.items[i].title %>"><%= data.results.summon.items[i].title %></a></h5>
                         <span class="row">
-                            <span class="col-md-12">[<%= data.results.summon.items[i].contentType %>]</span>
+                            <span class="col-md-3">
+                                <% if (data.results.summon.items[i].thumbnail) { %>
+                                <a href="#" class="thumbnail">
+                                  <img src="<%= data.results.summon.items[i].thumbnail %>" alt="<%= data.results.summon.items[i].title %>">
+                                </a>
+                                <% } %>
+                            </span>
+                            <span class="col-md-9">[<%= data.results.summon.items[i].contentType %>]</span>
                         </span>
+                        <hr/>
                     </li>
                 <% } %>
                 </ul>

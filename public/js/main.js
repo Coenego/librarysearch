@@ -10,9 +10,11 @@ var searchResults = function(e) {
 
     // Check if the user entered a valid query
     if (query) {
+        $('#myModal').modal('show');
         window.location.href  = 'http://localhost:1234/search/' + query;
         return false;
     }
+
     return false;
 };
 
