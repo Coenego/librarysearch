@@ -21,6 +21,7 @@
     "lib-aquabrowser": "",
     "lib-summon": "",
     "path": "latest",
+    "querystring": "latest",
     "request": "latest",
     "require-dir": "latest",
     "shelljs": "latest",

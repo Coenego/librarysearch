@@ -5,7 +5,7 @@ config.app = {
 }
 
 config.server = {
-    'port': 1234
+    'port': 7777
 };
 
 config.constants = {
@@ -23,5 +23,27 @@ config.constants = {
             'uri': 'api.summon.serialssolutions.com',
             'version': '/2.0.0/search'
         }
+    },
+    'types': {
+        'books': {
+            'aquabrowser': 'book',
+            'summon': 'Book'
+        },
+        'ebooks': {
+            'aquabrowser': 'ebook',
+            'summon': 'Ebook'
+        },
+        'ejournals': {
+            'aquabrowser': 'ejournal',
+            'summon': 'Ejournal'
+        },
+        'manuscripts': {
+            'aquabrowser': 'manuscript',
+            'summon': 'Manuscript'
+        },
+        'journals': {
+            'aquabrowser': 'journal',
+            'summon': 'Journal'
+        } 
     }
 }
