@@ -31,7 +31,7 @@ config.constants = {
         },
         'ebooks': {
             'aquabrowser': 'ebook',
-            'summon': 'Ebook'
+            'summon': 'eBook'
         },
         'ejournals': {
             'aquabrowser': 'ejournal',
@@ -43,7 +43,7 @@ config.constants = {
         },
         'journals': {
             'aquabrowser': 'journal',
-            'summon': 'Journal'
+            'summon': 'Journal Article'
         } 
     }
 }

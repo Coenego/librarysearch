@@ -20,3 +20,25 @@
 .modal-open, .modal-open .navbar-fixed-top {
   margin-right: 0 !important;
 }
+
+.row .result-sort, .row .filters, .col-error {
+    padding-top: 10px;
+}
+
+span.thumbnail {
+    display: block;
+    min-height: 100px;
+    max-width: 90px;
+}
+
+li.item {
+    list-style: none;
+}
+
+h5.item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}

@@ -1,6 +1,3 @@
-var mediaType = null;
-var numRecords = 10;
-
 /*
  * Search for results
  *
@@ -10,8 +7,8 @@ var searchResults = function(e) {
 
     // Store the value of the inputfield
     var query = $('#txtQuery').val();
-    query += '?records=' + numRecords;
-    if (mediaType) query += '&type=' + mediaType;
+    query += '?records=' + $('.numrecords').html();
+    if ($('.type').html() != 'All') query += '&type=' + $('.type').html();
 
     // Check if the user entered a valid query
     if (query) {
@@ -29,7 +26,7 @@ var searchResults = function(e) {
  * @param  {Event}    e                The dispatched event
  */
 var changeNumRecords = function(e) {
-    numRecords = $(e.currentTarget).attr('data-name');
+    var numRecords = $(e.currentTarget).attr('data-name');
     $('form#frmSearch').find('#dpd-numrecords').find('.numrecords').html(numRecords);
     e.preventDefault();
 };
@@ -40,16 +37,36 @@ var changeNumRecords = function(e) {
  * @param  {Event}    e                The dispatched event
  */
 var changeMediaType = function(e) {
-    mediaType = $(e.currentTarget).attr('data-name');
-    var label = $(e.currentTarget).find('a').html();
-    $('form#frmSearch').find('#dpd-type').find('.type').html(label);
+    var type = $(e.currentTarget).find('a').html();
+    $('form#frmSearch').find('#dpd-type').find('.type').html(type);
     e.preventDefault();
+};
+
+/**
+ * Function that toggles the filter list
+ *
+ * @param  {Event}    e                The dispatched event
+ */
+var showCompleteFilterList = function(e) {
+    var container = $(e.currentTarget).parent().parent().find('.filter-toggle');
+    $(container).slideToggle();
+    return false;
+};
+
+/**
+ * Function that initializes UI components
+ */
+var initUI = function() {
+    // Hide the container that displays the remaining facet filters
+    $('.filter-toggle').hide();
 };
 
 /*
  * Bind events
  */
 var addBinding = function() {
+    // When all the filters should be shown
+    $('.filter-list').find('.show-more').on('click', showCompleteFilterList);
     // When the search type dropdown is changed
     $('form#frmSearch').find('#dpd-numrecords').find('.dropdown-menu li').on('click', changeNumRecords);
     // When the search type dropdown is changed
@@ -62,7 +79,8 @@ var addBinding = function() {
  * Initialization
  */
 $(function() {
-
+    // Initialize UI components
+    initUI();
     // Bind events to components
     addBinding();
 });
